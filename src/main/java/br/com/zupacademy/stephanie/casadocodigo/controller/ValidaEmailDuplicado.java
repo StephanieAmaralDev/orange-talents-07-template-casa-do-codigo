@@ -29,12 +29,11 @@ public class ValidaEmailDuplicado  implements Validator {
         if(errors.hasErrors()){
             return;
         }
+
         AutorForm request = (AutorForm) o;
-
         Optional<Autor> autor = autorRepository.findByEmail(request.getEmail());
-
-        if(autor.isPresent()){
-            errors.reject("email",null, "Email já cadastrado." + request.getEmail());
+        if(autor.isPresent()) {
+            errors.rejectValue("email",null, "Email já cadastrado." + request.getEmail());
         }
     }
 }

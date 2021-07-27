@@ -23,9 +23,11 @@ public class AutorController {
     @Autowired
     private ValidaEmailDuplicado validaEmailDuplicado;
 
+    public AutorController() {
+    }
+
     @InitBinder //realiza configurações iniciais
     public void init(WebDataBinder binder) {
-
         binder.addValidators(validaEmailDuplicado);
     }
 
