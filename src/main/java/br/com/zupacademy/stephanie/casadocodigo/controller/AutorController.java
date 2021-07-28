@@ -25,11 +25,11 @@ public class AutorController {
 
     public AutorController() {
     }
-
+/*
     @InitBinder //realiza configurações iniciais
-    public void init(WebDataBinder binder) {
+   public void init(WebDataBinder binder) {
         binder.addValidators(validaEmailDuplicado);
-    }
+    }*/
 
     @PostMapping
     public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm, UriComponentsBuilder uriComponentsBuilder) {

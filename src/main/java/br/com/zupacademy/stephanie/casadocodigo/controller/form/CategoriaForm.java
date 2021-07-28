@@ -1,11 +1,8 @@
 package br.com.zupacademy.stephanie.casadocodigo.controller.form;
 
-import br.com.zupacademy.stephanie.casadocodigo.model.Autor;
-import br.com.zupacademy.stephanie.casadocodigo.model.Categoria;
-import br.com.zupacademy.stephanie.casadocodigo.repository.AutorRepository;
-import br.com.zupacademy.stephanie.casadocodigo.repository.CategoriaRepository;
-import br.com.zupacademy.stephanie.casadocodigo.validacao.UniqueColumn;
 
+import br.com.zupacademy.stephanie.casadocodigo.model.Categoria;
+import br.com.zupacademy.stephanie.casadocodigo.validacao.UniqueColumn;
 import javax.validation.constraints.NotBlank;
 
 

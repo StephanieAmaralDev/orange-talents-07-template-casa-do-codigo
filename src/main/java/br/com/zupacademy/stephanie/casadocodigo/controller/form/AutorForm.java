@@ -1,7 +1,9 @@
 package br.com.zupacademy.stephanie.casadocodigo.controller.form;
 
 import br.com.zupacademy.stephanie.casadocodigo.model.Autor;
+import br.com.zupacademy.stephanie.casadocodigo.model.Categoria;
 import br.com.zupacademy.stephanie.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.stephanie.casadocodigo.validacao.UniqueColumn;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +16,7 @@ public class AutorForm {
 
     @Email
     @NotNull @NotEmpty
+    @UniqueColumn(field = "email", entity = Autor.class)
     private String email;
 
     @NotNull @NotEmpty @Length(max = 400)
