@@ -1,4 +1,4 @@
-package br.com.zupacademy.stephanie.casadocodigo.controller;
+package br.com.zupacademy.stephanie.casadocodigo.validacao;
 
 import br.com.zupacademy.stephanie.casadocodigo.controller.form.AutorForm;
 import br.com.zupacademy.stephanie.casadocodigo.model.Autor;
