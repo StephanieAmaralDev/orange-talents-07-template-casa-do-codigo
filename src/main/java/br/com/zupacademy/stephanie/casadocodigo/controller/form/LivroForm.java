@@ -21,6 +21,10 @@ import java.util.Optional;
 
 public class LivroForm {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @UniqueColumn(field = "titulo", entity = Livro.class)
     @NotBlank
     private String titulo;
@@ -62,6 +66,10 @@ public class LivroForm {
     public LivroForm() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -91,8 +99,8 @@ public class LivroForm {
     }
 
 
-    public LivroForm(String titulo, String resumo, String sumario, Double preco, Integer numeroPaginas, String isbn, LocalDate dataPublicacao, Categoria categoria, Autor autor) {
-
+    public LivroForm(Long id, String titulo, String resumo, String sumario, Double preco, Integer numeroPaginas, String isbn, LocalDate dataPublicacao, Categoria categoria, Autor autor) {
+        this.id = id;
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;

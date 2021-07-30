@@ -1,10 +1,8 @@
 package br.com.zupacademy.stephanie.casadocodigo.controller;
 
-import br.com.zupacademy.stephanie.casadocodigo.controller.dto.CategoriaDto;
+import br.com.zupacademy.stephanie.casadocodigo.controller.dto.ItemListaLivroDto;
 import br.com.zupacademy.stephanie.casadocodigo.controller.dto.LivroDto;
-import br.com.zupacademy.stephanie.casadocodigo.controller.form.CategoriaForm;
 import br.com.zupacademy.stephanie.casadocodigo.controller.form.LivroForm;
-import br.com.zupacademy.stephanie.casadocodigo.model.Categoria;
 import br.com.zupacademy.stephanie.casadocodigo.model.Livro;
 import br.com.zupacademy.stephanie.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.stephanie.casadocodigo.repository.CategoriaRepository;
@@ -12,12 +10,11 @@ import br.com.zupacademy.stephanie.casadocodigo.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Validated
@@ -40,5 +37,11 @@ public class LivroController {
         Livro livro = livroForm.converter(autorRepository, categoriaRepository);
         livroRepository.save(livro);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/livros")
+    public List<ItemListaLivroDto> lista() {
+        List<Livro> livros = livroRepository.findAll();
+        return livros.stream().map(ItemListaLivroDto::new).collect(Collectors.toList());
     }
 }
