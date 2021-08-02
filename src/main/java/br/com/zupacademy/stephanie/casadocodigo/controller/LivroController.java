@@ -1,5 +1,6 @@
 package br.com.zupacademy.stephanie.casadocodigo.controller;
 
+import br.com.zupacademy.stephanie.casadocodigo.controller.dto.DetalheLivroDto;
 import br.com.zupacademy.stephanie.casadocodigo.controller.dto.ItemListaLivroDto;
 import br.com.zupacademy.stephanie.casadocodigo.controller.dto.LivroDto;
 import br.com.zupacademy.stephanie.casadocodigo.controller.form.LivroForm;
@@ -43,5 +44,17 @@ public class LivroController {
     public List<ItemListaLivroDto> lista() {
         List<Livro> livros = livroRepository.findAll();
         return livros.stream().map(ItemListaLivroDto::new).collect(Collectors.toList());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DetalheLivroDto> detalha(@PathVariable Long id) {
+        Livro livro = livroRepository.findById(id).orElse(null);
+
+        if (livro == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        DetalheLivroDto response = new DetalheLivroDto(livro);
+        return ResponseEntity.ok().body(response);
     }
 }

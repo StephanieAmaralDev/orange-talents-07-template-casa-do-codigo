@@ -51,7 +51,6 @@ public class Livro {
     @NotNull
     private Autor autor;
 
-
     public Livro() {
     }
 

@@ -23,9 +23,6 @@ public class AutorForm {
     private String descricao;
 
 
-    public AutorForm() {
-    }
-
     public String getNome() {
         return nome;
     }
